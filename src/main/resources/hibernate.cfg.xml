@@ -1,56 +1,61 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE hibernate-configuration PUBLIC
-    "-//Hibernate/Hibernate Configuration DTD//EN"
-    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <!--hibernate核心配置文件-->
 <hibernate-configuration>
-<!--<session-factory>-->
-  <!--&lt;!&ndash;  mysql用户名  &ndash;&gt;-->
-  <!--&lt;!&ndash;  mysql密码  &ndash;&gt;-->
-  <!--&lt;!&ndash; DB schema will be updated if needed &ndash;&gt;-->
-  <!--&lt;!&ndash; <property name="hbm2ddl.auto">update</property> &ndash;&gt;-->
-  <!--&lt;!&ndash;  mysql驱动  &ndash;&gt;-->
-  <!--<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>-->
+    <!--<session-factory>-->
+    <!--&lt;!&ndash;  mysql用户名  &ndash;&gt;-->
+    <!--&lt;!&ndash;  mysql密码  &ndash;&gt;-->
+    <!--&lt;!&ndash; DB schema will be updated if needed &ndash;&gt;-->
+    <!--&lt;!&ndash; <property name="hbm2ddl.auto">update</property> &ndash;&gt;-->
+    <!--&lt;!&ndash;  mysql驱动  &ndash;&gt;-->
+    <!--<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>-->
 
-  <!--&lt;!&ndash;  mysql连接URL  &ndash;&gt;-->
-  <!--&lt;!&ndash;建议：mysql的url最好是这样写上，如果要连接远程mysql，只需要把127.0.0.0.1的改为远程mysql地址即可，这里的zhibo 为数据库名，后面跟上的一串为字符串的编码，建议都写上&ndash;&gt;-->
-  <!--<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hibernate</property>-->
+    <!--&lt;!&ndash;  mysql连接URL  &ndash;&gt;-->
+    <!--&lt;!&ndash;建议：mysql的url最好是这样写上，如果要连接远程mysql，只需要把127.0.0.0.1的改为远程mysql地址即可，这里的zhibo 为数据库名，后面跟上的一串为字符串的编码，建议都写上&ndash;&gt;-->
+    <!--<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hibernate</property>-->
 
-  <!--&lt;!&ndash;  数据库方言,配置生成的相应的数据库的sql语句  &ndash;&gt;-->
-  <!--&lt;!&ndash;<property name="dialect">org.hibernate.dialect.MySQLDialect</property>&ndash;&gt;-->
-  <!--&lt;!&ndash;// 5.0之后使用的数据库方言&ndash;&gt;-->
-  <!--<property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>-->
+    <!--&lt;!&ndash;  数据库方言,配置生成的相应的数据库的sql语句  &ndash;&gt;-->
+    <!--&lt;!&ndash;<property name="dialect">org.hibernate.dialect.MySQLDialect</property>&ndash;&gt;-->
+    <!--&lt;!&ndash;// 5.0之后使用的数据库方言&ndash;&gt;-->
+    <!--<property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>-->
 
-  <!--&lt;!&ndash;  显示sql语句  &ndash;&gt;-->
-  <!--<property name="show_sql">true</property>-->
-  <!--&lt;!&ndash;  格式化sql语句  &ndash;&gt;-->
-  <!--<property name="format_sql">true</property>-->
+    <!--&lt;!&ndash;  显示sql语句  &ndash;&gt;-->
+    <!--<property name="show_sql">true</property>-->
+    <!--&lt;!&ndash;  格式化sql语句  &ndash;&gt;-->
+    <!--<property name="format_sql">true</property>-->
 
-  <!--&lt;!&ndash;  根据需要创建数据库  （这里的操作是，如果数据库中已经有这个表，就将这个表删除掉，重新创建表格）&ndash;&gt;-->
-  <!--&lt;!&ndash;<property name="hbm2ddl.auto">create</property>&ndash;&gt;-->
-  <!--&lt;!&ndash;刚刚生成的映射类&ndash;&gt;-->
-  <!--&lt;!&ndash;类的xml映射文件&ndash;&gt;-->
-  <!--<mapping resource="com/swx/entity/PersonEntity.hbm.xml"/>-->
-  <!--&lt;!&ndash;生成的实体类&ndash;&gt;-->
-  <!--<mapping class="com.swx.entity.PersonEntity"/>-->
-<!--</session-factory>-->
-  <session-factory>
-    <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hibernate?useSSL=false&amp;serverTimezone=UTC</property>
-    <property name="hibernate.connection.username">root</property>
-    <property name="hibernate.connection.password">123456</property>
-    <!-- 设置方言 -->
-    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-    <!-- 注册当前session上下文：保证同一线程中获得的session是同一个session
-    <property name="hibernate.current_session_context_class">thread</property>
-    -->
-    <!-- 自动建表 -->
-    <property name="hibernate.hbm2ddl.auto">update</property>
-    <!-- 显示SQL -->
-    <property name="hibernate.show_sql">true</property>
-    <!-- 格式化SQL -->
-    <property name="hibernate.format_sql">true</property>
-    <mapping class="com.swx.entity.PersonEntity"/>
-    <!--指定关联的 。hbm。xml文件 -->
-  </session-factory>
+    <!--&lt;!&ndash;  根据需要创建数据库  （这里的操作是，如果数据库中已经有这个表，就将这个表删除掉，重新创建表格）&ndash;&gt;-->
+    <!--&lt;!&ndash;<property name="hbm2ddl.auto">create</property>&ndash;&gt;-->
+    <!--&lt;!&ndash;刚刚生成的映射类&ndash;&gt;-->
+    <!--&lt;!&ndash;类的xml映射文件&ndash;&gt;-->
+    <!--<mapping resource="com/swx/entity/PersonEntity.hbm.xml"/>-->
+    <!--&lt;!&ndash;生成的实体类&ndash;&gt;-->
+    <!--<mapping class="com.swx.entity.PersonEntity"/>-->
+    <!--</session-factory>-->
+    <session-factory>
+    <!--mysql 8.0以上的配置-->
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hibernate?useSSL=false&amp;serverTimezone=UTC</property>
+        <!--用户名,密码,idea会在生成的时候自动删除-->
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">123456</property>
+        <!--用户名,密码,idea会在生成的时候自动删除-->
+        <!-- 设置方言,MySQL 5.5及以上版本  -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+        <!-- 注册当前session上下文：保证同一线程中获得的session是同一个session
+        <property name="hibernate.current_session_context_class">thread</property>
+        -->
+        <!-- 自动建表 -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <!-- 显示SQL -->
+        <property name="hibernate.show_sql">true</property>
+        <!-- 格式化SQL -->
+        <property name="hibernate.format_sql">true</property>
+        <!--指定关联的hbm xml文件 -->
+        <mapping class="com.swx.entity.PersonEntity"/>
+        <mapping resource="com/swx/entity/PersonEntity.hbm.xml"/>
+
+    </session-factory>
 </hibernate-configuration>

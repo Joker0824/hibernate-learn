@@ -7,9 +7,9 @@ import java.util.Objects;
 @Table(name = "person", schema = "hibernate", catalog = "")
 public class PersonEntity {
   private int id;
-  private String name;
   private String address;
   private String gender;
+  private String name;
   private String dob;
   private String email;
   private String mobile;
@@ -22,16 +22,6 @@ public class PersonEntity {
 
   public void setId(int id) {
     this.id = id;
-  }
-
-  @Basic
-  @Column(name = "name")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
   }
 
   @Basic
@@ -52,6 +42,16 @@ public class PersonEntity {
 
   public void setGender(String gender) {
     this.gender = gender;
+  }
+
+  @Basic
+  @Column(name = "name")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
   }
 
   @Basic
@@ -90,9 +90,9 @@ public class PersonEntity {
     if (o == null || getClass() != o.getClass()) return false;
     PersonEntity that = (PersonEntity) o;
     return id == that.id &&
-            Objects.equals(name, that.name) &&
             Objects.equals(address, that.address) &&
             Objects.equals(gender, that.gender) &&
+            Objects.equals(name, that.name) &&
             Objects.equals(dob, that.dob) &&
             Objects.equals(email, that.email) &&
             Objects.equals(mobile, that.mobile);
@@ -100,6 +100,6 @@ public class PersonEntity {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, address, gender, dob, email, mobile);
+    return Objects.hash(id, address, gender, name, dob, email, mobile);
   }
 }
