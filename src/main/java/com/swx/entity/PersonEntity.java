@@ -20,6 +20,7 @@ public class PersonEntity {
     return id;
   }
 
+
   public void setId(int id) {
     this.id = id;
   }
@@ -96,6 +97,19 @@ public class PersonEntity {
             Objects.equals(dob, that.dob) &&
             Objects.equals(email, that.email) &&
             Objects.equals(mobile, that.mobile);
+  }
+
+  @Override
+  public String toString() {
+    return "PersonEntity{" +
+            "id=" + id +
+            ", address='" + address + '\'' +
+            ", gender='" + gender + '\'' +
+            ", name='" + name + '\'' +
+            ", dob='" + dob + '\'' +
+            ", email='" + email + '\'' +
+            ", mobile='" + mobile + '\'' +
+            '}';
   }
 
   @Override

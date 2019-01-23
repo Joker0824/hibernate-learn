@@ -6,6 +6,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
+import java.io.Serializable;
+
 public class Demo {
 
   public void testDemo(){
@@ -21,7 +23,8 @@ public class Demo {
     //开启事务
     Transaction tx=session.beginTransaction();
     //保存到数据库
-    session.save(personEntity);
+    Serializable serializableSave = session.save(personEntity);
+    System.out.println(serializableSave);
     //提交事务
     tx.commit();
     //关闭
