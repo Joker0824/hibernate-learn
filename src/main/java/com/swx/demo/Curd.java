@@ -5,10 +5,12 @@ import com.swx.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.io.Serializable;
+
 /**
  * 使用hibernate增删查改
  */
-public class Curb {
+public class Curd {
   /**
    * 查找
    */
@@ -48,5 +50,21 @@ public class Curb {
     session.delete(personEntity);
     transaction.commit();
     session.close();
+  }
+  public void save(){
+    Session session = HibernateUtil.openSession();
+    Transaction transaction = session.beginTransaction();
+    //瞬时态对象,没有唯一的标识oid,没有被session管理(处理)
+    PersonEntity personEntity = new PersonEntity();
+    personEntity.setName("陈冠希");
+    personEntity.setEmail("陈冠希的电子邮件");
+    //持久态对象,有唯一的标识oid,被session管理
+    Serializable saveSerializable = session.save(personEntity);
+    System.out.println(saveSerializable);
+    System.out.println(session.get(PersonEntity.class,saveSerializable));
+    transaction.commit();
+    session.close();
+//    脱管态,有唯一的标识oid,脱离了session的管理
+    System.out.println(personEntity);
   }
 }

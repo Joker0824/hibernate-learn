@@ -4,9 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
-public class CurbTest {
+public class CurdTest {
 
   @Before
   public void setUp() throws Exception {
@@ -18,17 +16,22 @@ public class CurbTest {
 
   @Test
   public void get() {
-    new Curb().get();
+    new Curd().get();
   }
 
 
   @Test
   public void update() {
-    new Curb().update();
+    new Curd().update();
   }
 
   @Test
   public void delete() {
-    new Curb().delete();
+    new Curd().delete();
+  }
+
+  @Test
+  public void save() {
+    new Curd().save();
   }
 }

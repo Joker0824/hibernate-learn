@@ -3,6 +3,9 @@ package com.swx.entity;
 import javax.persistence.*;
 import java.util.Objects;
 
+/**
+ * 持久化类,尽量使用包装类的类型
+ */
 @Entity
 @Table(name = "person", schema = "hibernate", catalog = "")
 public class PersonEntity {
