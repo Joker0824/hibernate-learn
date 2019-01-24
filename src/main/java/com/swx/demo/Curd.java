@@ -4,8 +4,10 @@ import com.swx.entity.PersonEntity;
 import com.swx.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * 使用hibernate增删查改
@@ -29,7 +31,7 @@ public class Curd {
   /**
    * 更新
    */
-  public void update(){
+  public void update() {
     Session session = HibernateUtil.openSession();
     Transaction transaction = session.beginTransaction();
     PersonEntity personEntity = session.get(PersonEntity.class, 1);
@@ -43,7 +45,7 @@ public class Curd {
   /**
    * 删除
    */
-  public void delete(){
+  public void delete() {
     Session session = HibernateUtil.openSession();
     Transaction transaction = session.beginTransaction();
     PersonEntity personEntity = session.get(PersonEntity.class, 2);
@@ -51,7 +53,8 @@ public class Curd {
     transaction.commit();
     session.close();
   }
-  public void save(){
+
+  public void save() {
     Session session = HibernateUtil.openSession();
     Transaction transaction = session.beginTransaction();
     //瞬时态对象,没有唯一的标识oid,没有被session管理(处理)
@@ -61,10 +64,49 @@ public class Curd {
     //持久态对象,有唯一的标识oid,被session管理
     Serializable saveSerializable = session.save(personEntity);
     System.out.println(saveSerializable);
-    System.out.println(session.get(PersonEntity.class,saveSerializable));
+    System.out.println(session.get(PersonEntity.class, saveSerializable));
     transaction.commit();
     session.close();
 //    脱管态,有唯一的标识oid,脱离了session的管理
     System.out.println(personEntity);
+  }
+
+  /**
+   * 通过query对象查询
+   */
+  public void query() {
+    Session currentSession = HibernateUtil.getCurrentSession();
+//    写实体类名
+    Transaction transaction = currentSession.beginTransaction();
+    String hql = "from PersonEntity";
+    Query query = currentSession.createQuery(hql);
+    List<PersonEntity> list = query.list();
+    for (PersonEntity p : list) {
+      System.out.println(list);
+    }
+    transaction.commit();
+  }
+
+  /**
+   * 一级缓存快照区
+   */
+  public void demo1() {
+    Session session = HibernateUtil.openSession();
+    Transaction transaction = session.beginTransaction();
+    PersonEntity personEntity = session.get(PersonEntity.class, 16);
+    personEntity.setAddress("香港");
+    System.out.println(personEntity);
+    transaction.commit();
+    session.close();
+  }
+
+  public void demo2() {
+    Session session = HibernateUtil.getCurrentSession();
+    Transaction transaction = session.beginTransaction();
+    PersonEntity personEntity = session.get(PersonEntity.class, 16);
+    personEntity.setAddress("Hongkong");
+    transaction.commit();
+//    绑定了当前线程,不用关闭session
+    session.close();
   }
 }

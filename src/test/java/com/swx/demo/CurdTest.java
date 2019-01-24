@@ -34,4 +34,19 @@ public class CurdTest {
   public void save() {
     new Curd().save();
   }
+
+  @Test
+  public void demo1() {
+    new Curd().demo1();
+  }
+
+  @Test
+  public void demo2() {
+    new Curd().demo2();
+  }
+
+  @Test
+  public void query() {
+    new Curd().query();
+  }
 }
