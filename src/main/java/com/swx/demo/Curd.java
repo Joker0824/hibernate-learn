@@ -78,11 +78,13 @@ public class Curd {
     Session currentSession = HibernateUtil.getCurrentSession();
 //    写实体类名
     Transaction transaction = currentSession.beginTransaction();
-    String hql = "from PersonEntity";
+    String hql = "from PersonEntity where name like ?";
+//    String hql = "from PersonEntity";
     Query query = currentSession.createQuery(hql);
+    query.setParameter(0,"陈%");
     List<PersonEntity> list = query.list();
     for (PersonEntity p : list) {
-      System.out.println(list);
+      System.out.println(p);
     }
     transaction.commit();
   }
